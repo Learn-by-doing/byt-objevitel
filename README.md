@@ -30,7 +30,7 @@ To work on this project, you will need the following:
 
 ## Getting Started
 
-Before you continue, be sure that you have all the necessary [Project Dependencies](#project-dependencies) for this project.
+Before you continue, be sure that you have all the necessary [Project requirements](#requirements) for this project.
 
 ### Create Your Own "Fork" of this Project
 
