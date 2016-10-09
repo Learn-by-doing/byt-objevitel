@@ -1,5 +1,6 @@
 'use strict';
 
+var _ = require('underscore');
 var cheerio = require('cheerio');
 var request = require('request');
 
@@ -68,9 +69,29 @@ var Source = module.exports = {
 	}
 };
 
+var knex = require('knex')({
+	client: 'mysql',
+	connection: {
+		host     : 'localhost',
+		user     : 'learning_db',
+		password : 'password',
+		database : 'learning_db'
+	}
+});
+
 Source.getResults(1, function(error, results) {
 
 	console.log(error);
-	console.log(results);
 
+	results = _.map(results, function(result) {
+		return {
+			url: result
+		};
+	});
+
+	knex.insert(results).table('detail_urls').then(function() {
+		console.log(arguments);
+	}).catch(function(error) {
+		console.log(error);
+	});
 });
